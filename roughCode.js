@@ -1,17 +1,25 @@
+var isReaction = {};
+//Currently using an example
+//TODO read from file
+//TODO consider striping protocol and sub-domain from url
+isReaction["http://i.imgur.com/omHN0g8.gifv"] = true;
 
-comments = document.getElementsByClassName(" noncollapsed comment")
+
+
 //"entry unvoted"
 //"user text"
 //"user-text... etc"
 //"md"
 
-var isReaction = {};
-
-isReaction["http://i.imgur.com/omHN0g8.gifv"] = true;
 
 var urlRegex = /\b(http|https)?(:\/\/)?(\S*)\.(\w{2,4})\b/;
 
-for (i = 0; i < comments.length; i++){
+
+if (document.URL.match(/reddit(.*)comments/)){
+	//Getting all noncollapsed comments
+	comments = document.getElementsByClassName(" noncollapsed comment")
+
+	for (i = 0; i < comments.length; i++){
 	comment = comments[i];
 	commentDiv = comment.querySelector(".md");
 	commentText = commentDiv.textContent;
@@ -26,8 +34,17 @@ for (i = 0; i < comments.length; i++){
 			noncollapsedClass = comment.getAttribute("class"); 
 			comment.setAttribute("class" , 
 				noncollapsedClass.replace("noncollapsed","collapsed"));
-			
+			//Consider doing addtional actions based on options.
+			/* Ideas: 
+			/ + Make comment some user specified color.
+			/ + Put short title or decription in tag. (using imgur api)
+			/ + Allow user to not collapse.
+			/ + Allow user to record global count of number of gif blocked
+			*/
+
 		}
 	}
 
 }
+}
+
