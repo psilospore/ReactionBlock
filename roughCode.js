@@ -2,7 +2,7 @@ var isReaction = {};
 //Currently using an example
 //TODO read from file
 //TODO consider striping protocol and sub-domain from url
-isReaction["http://i.imgur.com/omHN0g8.gifv"] = true;
+isReaction["http://i.imgur.com/Lmy5P.jpg"] = true;
 
 
 console.log("Starting");
@@ -27,7 +27,7 @@ if (document.URL.match(/reddit(.*)comments/)){
 
 	var matchedLinks = commentText.match(urlRegex);
 	for(j = 0; (matchedLinks != null) && (j < matchedLinks.length); j++){
-		console.log(matchedLinks[j])
+		//console.log(matchedLinks[j])
 		if (isReaction[matchedLinks[j]]){
 			console.log("found isReaction");
 			//get uncollapsed comment and collapse it

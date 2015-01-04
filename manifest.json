@@ -12,11 +12,10 @@
 
   "content_scripts": [
     {
-      "matches": ["www.reddit.com/*"],
+      "matches": ["http://*.reddit.com/*"],
       "js": ["roughCode.js"]
     }
-  ],
+  ]
 
-  "permissions": ["tabs", "<all_urls>"]
 
 }
