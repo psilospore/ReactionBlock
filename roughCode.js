@@ -5,16 +5,16 @@ var isReaction = {};
 isReaction["http://i.imgur.com/omHN0g8.gifv"] = true;
 
 
-
+console.log("Starting");
 //"entry unvoted"
 //"user text"
 //"user-text... etc"
 //"md"
-
+//TODO read about content scripts
 
 var urlRegex = /\b(http|https)?(:\/\/)?(\S*)\.(\w{2,4})\b/;
 
-
+console.log(document);
 if (document.URL.match(/reddit(.*)comments/)){
 	//Getting all noncollapsed comments
 	comments = document.getElementsByClassName(" noncollapsed comment")
@@ -27,7 +27,7 @@ if (document.URL.match(/reddit(.*)comments/)){
 
 	var matchedLinks = commentText.match(urlRegex);
 	for(j = 0; (matchedLinks != null) && (j < matchedLinks.length); j++){
-		//console.log(matchedLinks[j])
+		console.log(matchedLinks[j])
 		if (isReaction[matchedLinks[j]]){
 			console.log("found isReaction");
 			//get uncollapsed comment and collapse it
